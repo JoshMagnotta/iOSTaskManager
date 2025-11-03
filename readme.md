@@ -55,12 +55,14 @@ Task Manager is an iOS application that allows for users to create categories fo
 
 ### 2. Screen Archetypes
 
-- [ ] [list first screen here]
-* [list associated required story here]
-* ...
-list second screen here]
-* [list associated required story here]
-* ...
+- [ ] Home Screen
+* As a user, I want to create different categories, so that I can seperate different tasks
+* As a user, I want to create tasks and assign it to a category, so that I can group tasks together
+* As a user, I want to set due dates for tasks, so I can keep track of when things need to be done by
+- [ ] List View
+* As a user, I want to be able to view all assignments in a list view, so I can look at my upcoming assignments in a list
+- [ ] Calendar View
+* As a user, I want to be able to view all assignments in a calendar view, so I can look at my upcoming assignments in a calendar
 
 ### 3. Navigation
 
