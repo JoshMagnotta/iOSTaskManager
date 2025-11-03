@@ -1,8 +1,3 @@
----
-title: brainstorming
-
----
-
 # Step 1
 
 ## Weather
