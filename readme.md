@@ -42,21 +42,21 @@ https://www.loom.com/share/a24de1b5051a4b858a785a95aea687f0
 
 **Required Must-have Stories**
 
-[x] As a user, I want to create different categories, so that I can seperate different tasks
-[ ] As a user, I want to create tasks and assign it to a category, so that I can group tasks together
-[ ] As a user, I want to set due dates for tasks, so I can keep track of when things need to be done by
-[ ] As a user, I want to be able to view all assignments in a list view, so I can look at my upcoming assignments in a list
-[ ] As a user, I want to be able to view all assignments in a calendar view, so I can look at my upcoming assignments in a calendar
-[x] As a developer, I want to enable data persistance by using user defaults so that the user can have persistant data
+- [x] As a user, I want to create different categories, so that I can seperate different tasks
+- [ ] As a user, I want to create tasks and assign it to a category, so that I can group tasks together
+- [ ] As a user, I want to set due dates for tasks, so I can keep track of when things need to be done by
+- [ ] As a user, I want to be able to view all assignments in a list view, so I can look at my upcoming assignments in a list
+- [ ] As a user, I want to be able to view all assignments in a calendar view, so I can look at my upcoming assignments in a calendar
+- [x] As a developer, I want to enable data persistance by using user defaults so that the user can have persistant data
 
 **Optional Nice-to-have Stories**
 
 
-[ ] As a developer, I want to enable push notifications so that users can be informed without opening the app
-[ ] As a developer, I want to enable data persistance across devices by using a database to store data
-[ ] As a developer, I want to enable account creation that can be logged into the same account from multiple devices
-[ ] As a user, I want to change settings such as how often to be notified, so that I can be in control of notifications
-[ ] As a user, I want to be able to change account details, so I can reset my password or change my email when necessary
+- [ ] As a developer, I want to enable push notifications so that users can be informed without opening the app
+- [ ] As a developer, I want to enable data persistance across devices by using a database to store data
+- [ ] As a developer, I want to enable account creation that can be logged into the same account from multiple devices
+- [ ] As a user, I want to change settings such as how often to be notified, so that I can be in control of notifications
+- [ ] As a user, I want to be able to change account details, so I can reset my password or change my email when necessary
 
 ### 2. Screen Archetypes
 
