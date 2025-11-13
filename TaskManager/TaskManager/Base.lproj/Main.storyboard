@@ -72,6 +72,7 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
+                    <navigationItem key="navigationItem" id="fat-78-2gR"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="EvJ-wd-Ex0" id="DHY-dR-Hh0"/>
@@ -79,7 +80,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SHG-em-lQH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="684.73282442748086" y="603.52112676056345"/>
+            <point key="canvasLocation" x="1636" y="615"/>
+        </scene>
+        <!--List View-->
+        <scene sceneID="7p3-Bh-KxP">
+            <objects>
+                <navigationController id="hzz-hs-3bW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="List View" image="list.bullet.clipboard.fill" catalog="system" id="4eA-8v-PL5"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cUn-20-8tv">
+                        <rect key="frame" x="0.0" y="118" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ih0-vQ-AGk" kind="relationship" relationship="rootViewController" id="B6H-cO-nh3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c6o-RN-PVE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="727" y="615"/>
+        </scene>
+        <!--Calendar-->
+        <scene sceneID="1zl-B5-fcS">
+            <objects>
+                <navigationController id="fhF-Rl-AYB" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calendar.circle.fill" catalog="system" id="N4U-hn-NVn"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KcA-pK-AZo">
+                        <rect key="frame" x="0.0" y="118" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="zp9-uY-I4p" kind="relationship" relationship="rootViewController" id="oPh-n0-6Pf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AvL-Se-dCh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="727" y="1350"/>
         </scene>
         <!--New Task-->
         <scene sceneID="gUB-cc-dLJ">
@@ -103,6 +138,7 @@
                         <viewLayoutGuide key="safeArea" id="2q0-jm-oSU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="uha-xr-CS3"/>
                     <connections>
                         <outlet property="datePicker" destination="JVm-7V-mDL" id="BCm-w8-782"/>
                         <outlet property="titleTextField" destination="fws-iU-MFL" id="xNz-cs-cek"/>
@@ -110,13 +146,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1XS-pk-gZS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-199.23664122137404" y="603.52112676056345"/>
+            <point key="canvasLocation" x="1636" y="1350"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="f70-TM-new">
             <objects>
                 <navigationController id="0LP-es-eSk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="SVh-FA-V7k"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="SVh-FA-V7k"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2ov-EX-pbl">
                         <rect key="frame" x="0.0" y="118" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -141,6 +177,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="0LP-es-eSk" kind="relationship" relationship="viewControllers" id="woz-QW-lOS"/>
+                        <segue destination="hzz-hs-3bW" kind="relationship" relationship="viewControllers" id="1vs-bl-fDp"/>
+                        <segue destination="fhF-Rl-AYB" kind="relationship" relationship="viewControllers" id="2Sh-65-ux8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Tv-kQ-wjk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -149,6 +187,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="calendar.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="house.fill" catalog="system" width="128" height="104"/>
+        <image name="list.bullet.clipboard.fill" catalog="system" width="98" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
