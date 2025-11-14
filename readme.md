@@ -43,10 +43,12 @@ https://www.loom.com/share/a24de1b5051a4b858a785a95aea687f0
 **Required Must-have Stories**
 
 - [x] As a user, I want to create different categories, so that I can seperate different tasks
-- [ ] As a user, I want to create tasks and assign it to a category, so that I can group tasks together
-- [ ] As a user, I want to set due dates for tasks, so I can keep track of when things need to be done by
-- [ ] As a user, I want to be able to view all assignments in a list view, so I can look at my upcoming assignments in a list
-- [ ] As a user, I want to be able to view all assignments in a calendar view, so I can look at my upcoming assignments in a calendar
+- [x] As a user, I want to create tasks and assign it to a category, so that I can group tasks together
+- [x] As a user, I want to set due dates for tasks, so I can keep track of when things need to be done by
+- [x] As a user, I want to be able to view all tasks in a list view, so I can look at my upcoming assignments in a list
+- [x] As a user, I want to be able to filter tasks by category in a list view, so I can look at my upcoming tasks per category in a list
+- [ ] As a user, I want to be able to view all tasks in a calendar view, so I can look at my upcoming assignments in a calendar
+- [ ] As a user, I want to be able to filter tasks by category in a calendar view, so I can look at my upcoming tasks per category in a calendar
 - [x] As a developer, I want to enable data persistance by using user defaults so that the user can have persistant data
 
 **Optional Nice-to-have Stories**

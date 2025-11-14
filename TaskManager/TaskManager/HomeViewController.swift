@@ -74,7 +74,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     // Handle tap → go to Task List
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "TaskListViewController") as! TaskListViewController
-        vc.categoryName = categories[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
 }
