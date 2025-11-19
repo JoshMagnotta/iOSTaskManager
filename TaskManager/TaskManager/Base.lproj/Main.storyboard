@@ -51,7 +51,7 @@
         <!--Task List-->
         <scene sceneID="cj7-Gn-XJA">
             <objects>
-                <viewController title="Task List" id="ih0-vQ-AGk" customClass="TaskListViewController" customModule="TaskManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaskListViewController" title="Task List" id="ih0-vQ-AGk" customClass="TaskListViewController" customModule="TaskManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FhL-zJ-oAU">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -220,9 +220,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="4bu-LQ-NP9"/>
                                 </constraints>
-                                <connections>
-                                    <action selector="saveTaskPressed:" destination="zp9-uY-I4p" eventType="valueChanged" id="bZB-zW-c4W"/>
-                                </connections>
                             </datePicker>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loN-xL-fRe">
                                 <rect key="frame" x="0.0" y="575" width="393" height="85"/>
@@ -278,8 +275,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="uha-xr-CS3"/>
                     <connections>
-                        <outlet property="categoryPicker" destination="oUD-GM-Vhf" id="Ybe-X4-iPf"/>
-                        <outlet property="datePicker" destination="JVm-7V-mDL" id="BCm-w8-782"/>
+                        <outlet property="categoryPicker" destination="oUD-GM-Vhf" id="eTf-ZQ-5Wd"/>
+                        <outlet property="datePicker" destination="JVm-7V-mDL" id="qoX-qu-SoC"/>
                         <outlet property="descriptionTextView" destination="Vxq-N9-pty" id="dqm-3N-FOC"/>
                         <outlet property="priorityPicker" destination="loN-xL-fRe" id="0u3-3k-AUR"/>
                         <outlet property="titleTextField" destination="Qzk-ow-g2q" id="IuR-2n-hld"/>
@@ -292,7 +289,7 @@
         <!--Login-->
         <scene sceneID="NQm-Xh-LzL">
             <objects>
-                <viewController title="Login" id="H5l-8y-Eug" customClass="LoginViewController" customModule="TaskManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" title="Login" id="H5l-8y-Eug" customClass="LoginViewController" customModule="TaskManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NzD-GM-2Dp">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

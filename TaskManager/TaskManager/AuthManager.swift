@@ -35,18 +35,28 @@ class AuthManager {
 
             guard let httpResponse = response as? HTTPURLResponse else { return }
 
-            // 201 success
             if httpResponse.statusCode == 201,
                let data = data,
                let decoded = try? JSONDecoder().decode(SignupResponse.self, from: data) {
+
                 completion(.success(decoded.message))
                 return
             }
 
-            if httpResponse.statusCode == 409 {
-                completion(.failure(NSError(domain: "", code: 409, userInfo: [NSLocalizedDescriptionKey : "Email already used"])))
+            if httpResponse.statusCode == 400 || httpResponse.statusCode == 409 {
+                if let data = data,
+                   let decodedError = try? JSONDecoder().decode(AuthErrorResponse.self, from: data) {
+                    completion(.failure(NSError(domain: "", code: httpResponse.statusCode, userInfo: [
+                        NSLocalizedDescriptionKey: decodedError.error
+                    ])))
+                } else {
+                    completion(.failure(NSError(domain: "", code: httpResponse.statusCode, userInfo: [
+                        NSLocalizedDescriptionKey: "Invalid signup information"
+                    ])))
+                }
                 return
             }
+
 
             completion(.failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "Unknown error"])))
 

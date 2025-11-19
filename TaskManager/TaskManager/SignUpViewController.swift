@@ -17,11 +17,14 @@ class SignUpViewController: UIViewController {
             AuthManager.shared.signup(email: email, password: password) { result in
                 DispatchQueue.main.async {
                     switch result {
-                    case .success(_):
-                        // After signup, take the user to login screen
-                        self.navigationController?.popViewController(animated: true)
+
+                    case .success(let message):
+                        print("Signup successful:", message)
+
+                        self.goToLogin()
+
                     case .failure(let error):
-                        self.showAlert(error.localizedDescription)
+                        self.showErrorAlert(message: error.localizedDescription)
                     }
                 }
             }
@@ -35,6 +38,20 @@ class SignUpViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    func goToLogin() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+        loginVC.modalPresentationStyle = .fullScreen
+        present(loginVC, animated: true)
+    }
+    
+    func showErrorAlert(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+
     
 
     /*

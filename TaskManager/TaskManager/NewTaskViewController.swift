@@ -27,6 +27,21 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     var selectedPriority: Priority = .medium
     
     let tasksKey = "tasks_by_category"
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        titleTextField.text = ""
+        descriptionTextView.text = ""
+        datePicker.date = Date()
+
+        selectedCategory = categories.first
+        categoryPicker.selectRow(0, inComponent: 0, animated: false)
+
+        selectedPriority = .medium
+        priorityPicker.selectRow(Priority.allCases.firstIndex(of: .medium) ?? 0, inComponent: 0, animated: false)
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +92,9 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         }
 
         delegate?.didCreateTask()
-        navigationController?.popViewController(animated: true)
+        self.tabBarController?.selectedIndex = 1
+
+        
     }
 
     // MARK: - Picker Delegates

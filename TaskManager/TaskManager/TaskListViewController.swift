@@ -41,9 +41,15 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
         if let data = UserDefaults.standard.data(forKey: tasksKey),
            let saved = try? JSONDecoder().decode([String: [Task]].self, from: data) {
 
-            allTasks = saved.values.flatMap { $0 }   // merge all categories
+            // Flatten dictionary into a single list
+            allTasks = saved.values.flatMap { $0 }
+            filteredTasks = allTasks
+        } else {
+            allTasks = []
+            filteredTasks = []
         }
     }
+
 
     func applyFilter(category: String?) {
         if let category = category {
@@ -63,6 +69,16 @@ class TaskListViewController: UIViewController, UITableViewDelegate, UITableView
 
         sortedDates = groupedTasks.keys.sorted()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadAllTasks()
+        filteredTasks = allTasks
+        groupTasks()
+        tableView.reloadData()
+    }
+
+
 
     // MARK: - TABLE VIEW
 

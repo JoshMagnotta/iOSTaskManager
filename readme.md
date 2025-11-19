@@ -31,6 +31,11 @@ Task Manager is an iOS application that allows for users to create categories fo
 -- It will not be too technically challenging, slight tweaks will be made to the API, but they will not be time consuming
 -- This app will be able to use built in components 
 
+## Final Functionality
+Videos | Library | Loom - 19 November 2025 - Watch Video
+
+https://www.loom.com/share/73b7f5d8cedd42e8b489da84dafe5683
+
 ## Milestone 2 Status
 Videos | Library | Loom - 10 November 2025 - Watch Video
 
@@ -55,7 +60,7 @@ https://www.loom.com/share/a24de1b5051a4b858a785a95aea687f0
 - [ ] As a user, I want to be able to view all tasks in a calendar view, so I can look at my upcoming assignments in a calendar
 - [ ] As a user, I want to be able to filter tasks by category in a calendar view, so I can look at my upcoming tasks per category in a calendar
 - [ ] As a developer, I want to enable push notifications so that users can be informed without opening the app
-- [ ] As a developer, I want to enable data persistance across devices by using a database to store data
+- [x] As a developer, I want to enable data persistance across devices by using a database to store data
 - [x] As a developer, I want to enable account creation that can be logged into the same account from multiple devices
 - [ ] As a user, I want to change settings such as how often to be notified, so that I can be in control of notifications
 - [ ] As a user, I want to be able to change account details, so I can reset my password or change my email when necessary
