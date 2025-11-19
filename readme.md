@@ -47,16 +47,16 @@ https://www.loom.com/share/a24de1b5051a4b858a785a95aea687f0
 - [x] As a user, I want to set due dates for tasks, so I can keep track of when things need to be done by
 - [x] As a user, I want to be able to view all tasks in a list view, so I can look at my upcoming assignments in a list
 - [x] As a user, I want to be able to filter tasks by category in a list view, so I can look at my upcoming tasks per category in a list
-- [ ] As a user, I want to be able to view all tasks in a calendar view, so I can look at my upcoming assignments in a calendar
-- [ ] As a user, I want to be able to filter tasks by category in a calendar view, so I can look at my upcoming tasks per category in a calendar
 - [x] As a developer, I want to enable data persistance by using user defaults so that the user can have persistant data
+- [x] As a user, I want to be able to create and login to my account via an API so that I can store data in a database
 
 **Optional Nice-to-have Stories**
 
-
+- [ ] As a user, I want to be able to view all tasks in a calendar view, so I can look at my upcoming assignments in a calendar
+- [ ] As a user, I want to be able to filter tasks by category in a calendar view, so I can look at my upcoming tasks per category in a calendar
 - [ ] As a developer, I want to enable push notifications so that users can be informed without opening the app
 - [ ] As a developer, I want to enable data persistance across devices by using a database to store data
-- [ ] As a developer, I want to enable account creation that can be logged into the same account from multiple devices
+- [x] As a developer, I want to enable account creation that can be logged into the same account from multiple devices
 - [ ] As a user, I want to change settings such as how often to be notified, so that I can be in control of notifications
 - [ ] As a user, I want to be able to change account details, so I can reset my password or change my email when necessary
 
@@ -94,16 +94,15 @@ https://www.loom.com/share/a24de1b5051a4b858a785a95aea687f0
 
 <img src="https://i.imgur.com/sSsMKxB.jpeg" width=600>
 
-## Schema 
-
-[This section will be completed in Unit 9]
-
-### Models
-
-[Add table of models]
 
 ### Networking
 
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+This application uses a custom made [Task API](https://github.com/JoshMagnotta/task-api). The following endpoints are currently implemented
+
+Signup View
+- POST /auth/signup
+
+Login View
+- POST /auth/login
+
+User account information is stored in a Postgres Database, passwords are salted using bcrypt and stored securely

@@ -18,13 +18,15 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var categoryPicker: UIPickerView!
-
+    @IBOutlet weak var priorityPicker: UIPickerView!
+    
     // MARK: - Variables
     weak var delegate: NewTaskDelegate?
-    var selectedCategory: String?
-    let tasksKey = "tasks_by_category"
-
     var categories: [String] = []
+    var selectedCategory: String?
+    var selectedPriority: Priority = .medium
+    
+    let tasksKey = "tasks_by_category"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +35,14 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         // Load categories
         categories = UserDefaults.standard.stringArray(forKey: "categories_list") ?? []
         selectedCategory = categories.first
-
+        
+        // Picker setup
         categoryPicker.delegate = self
         categoryPicker.dataSource = self
-
+        
+        priorityPicker.delegate = self
+        priorityPicker.dataSource = self
+        
         // Style description box
         descriptionTextView.layer.borderColor = UIColor.systemGray4.cgColor
         descriptionTextView.layer.borderWidth = 1
@@ -52,19 +58,20 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             title: title,
             category: category,
             dueDate: datePicker.date,
-            details: descriptionTextView.text
+            details: descriptionTextView.text,
+            priority: selectedPriority
         )
 
-        // Load dictionary of tasks
+        // Load stored tasks
         var allTasks = (try? JSONDecoder().decode(
             [String: [Task]].self,
             from: UserDefaults.standard.data(forKey: tasksKey) ?? Data()
         )) ?? [:]
 
-        // Append the new task
+        // Append the new one
         allTasks[category, default: []].append(newTask)
 
-        // Save back to UserDefaults
+        // Save back
         if let encoded = try? JSONEncoder().encode(allTasks) {
             UserDefaults.standard.set(encoded, forKey: tasksKey)
         }
@@ -73,18 +80,30 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         navigationController?.popViewController(animated: true)
     }
 
-    // MARK: - Picker View
-    func numberOfComponents(in pickerView: UIPickerView) -> Int { return 1 }
+    // MARK: - Picker Delegates
+    func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return categories.count
+        if pickerView == categoryPicker {
+            return categories.count
+        } else {
+            return Priority.allCases.count
+        }
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return categories[row]
+        if pickerView == categoryPicker {
+            return categories[row]
+        } else {
+            return Priority.allCases[row].rawValue
+        }
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedCategory = categories[row]
+        if pickerView == categoryPicker {
+            selectedCategory = categories[row]
+        } else {
+            selectedPriority = Priority.allCases[row]
+        }
     }
 }

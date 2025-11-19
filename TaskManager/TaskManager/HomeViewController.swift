@@ -47,6 +47,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Categories"
+        
+        if let email = UserSession.shared.email {
+            navigationItem.title = "Welcome, \(email)"
+        }
+
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -57,6 +62,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             } else {
                 categories = ["Assignments", "Exams", "Personal", "Work"] // First time launch defaults
             }
+        
     }
 
     // Number of rows

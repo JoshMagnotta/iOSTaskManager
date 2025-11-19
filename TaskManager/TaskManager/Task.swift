@@ -12,4 +12,5 @@ struct Task: Codable {
     let category: String
     let dueDate: Date
     let details: String?
+    let priority: Priority?
 }
