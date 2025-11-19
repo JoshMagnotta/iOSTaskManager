@@ -8,24 +8,28 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    
 
     @IBAction func loginButton(_ sender: Any) {
+        
         guard let email = emailField.text,
                   let password = passwordField.text else { return }
 
-            AuthManager.shared.login(email: email, password: password) { result in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let token):
-                        UserSession.shared.email = email
-                        UserSession.shared.accessToken = token
+        AuthManager.shared.login(email: email, password: password) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let token):
+                    UserDefaults.standard.set(email, forKey: "loggedInEmail")
+                    UserDefaults.standard.set(token, forKey: "accessToken")
+                    self.presentMainApp()
+                    print("Logged in!")
 
-                        self.presentMainApp()
-                    case .failure(let error):
-                        self.showAlert(error.localizedDescription)
-                    }
+                case .failure(let error):
+                    self.showErrorAlert(message: error.localizedDescription)
                 }
             }
+        }
+
     }
     @IBAction func signUpButton(_ sender: Any) {
     }
@@ -49,6 +53,13 @@ class LoginViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }
+    
+    func showErrorAlert(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+
 
     
 

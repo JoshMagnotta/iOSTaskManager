@@ -55,39 +55,51 @@ class AuthManager {
 
     // MARK: - Login
     func login(email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
-
-        guard let url = URL(string: "\(baseURL)/auth/login") else { return }
-
+        let url = URL(string: "\(baseURL)/auth/login")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let body = AuthRequest(email: email, password: password)
-        request.httpBody = try? JSONEncoder().encode(body)
+
+        do {
+            request.httpBody = try JSONEncoder().encode(body)
+        } catch {
+            return completion(.failure(error))
+        }
 
         URLSession.shared.dataTask(with: request) { data, response, error in
-
+            
             if let error = error {
-                completion(.failure(error))
-                return
+                return completion(.failure(error))
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse,
+                  let data = data else {
+                return completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No response"])))
             }
 
-            guard let httpResponse = response as? HTTPURLResponse else { return }
-
-            if httpResponse.statusCode == 200,
-               let data = data,
-               let decoded = try? JSONDecoder().decode(LoginResponse.self, from: data) {
-                completion(.success(decoded.accessToken))
-                return
+            if httpResponse.statusCode == 200 {
+                do {
+                    let decoded = try JSONDecoder().decode(LoginResponse.self, from: data)
+                    completion(.success(decoded.accessToken))
+                } catch {
+                    completion(.failure(error))
+                }
+            } else {
+                do {
+                    let decodedError = try JSONDecoder().decode(AuthErrorResponse.self, from: data)
+                    completion(.failure(NSError(domain: "", code: httpResponse.statusCode, userInfo: [
+                        NSLocalizedDescriptionKey: decodedError.error
+                    ])))
+                } catch {
+                    completion(.failure(NSError(domain: "", code: httpResponse.statusCode, userInfo: [
+                        NSLocalizedDescriptionKey: "Unknown server error"
+                    ])))
+                }
             }
-
-            if httpResponse.statusCode == 401 {
-                completion(.failure(NSError(domain: "", code: 401, userInfo: [NSLocalizedDescriptionKey : "Email or password incorrect"])))
-                return
-            }
-
-            completion(.failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "Unknown error"])))
 
         }.resume()
     }
+
 }

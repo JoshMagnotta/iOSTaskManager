@@ -48,9 +48,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         title = "Categories"
         
-        if let email = UserSession.shared.email {
+        if let email = UserDefaults.standard.string(forKey: "loggedInEmail") {
             navigationItem.title = "Welcome, \(email)"
-        }
+           } else {
+               title = "Home"
+           }
+    
 
 
         tableView.delegate = self
