@@ -12,12 +12,11 @@ class SignUpViewController: UIViewController {
     
     @IBAction func signupButton(_ sender: Any) {
         guard let email = emailField.text,
-                  let password = passwordField.text else { return }
+              let password = passwordField.text else { return }
 
-            AuthManager.shared.signup(email: email, password: password) { result in
-                DispatchQueue.main.async {
-                    switch result {
-
+        AuthManager.shared.signup(email: email, password: password) { result in
+            DispatchQueue.main.async {
+                switch result {
                     case .success(let message):
                         print("Signup successful:", message)
 
@@ -63,11 +62,5 @@ class SignUpViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-    func showAlert(_ message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
-    }
 
 }

@@ -37,7 +37,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             present(alert, animated: true)
 
     }
-    // TODO: Temporary mock data (later you’ll load from UserDefaults)
+    // TODO: Temporary mock data (later load from UserDefaults)
     var categories: [String] = []
 
     
@@ -59,28 +59,29 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         
-        // Load saved categories, or default ones on first launch
+        
             if let saved = UserDefaults.standard.array(forKey: categoriesKey) as? [String] {
                 categories = saved
             } else {
-                categories = ["Assignments", "Exams", "Personal", "Work"] // First time launch defaults
+                // Defaults
+                categories = ["Assignments", "Exams", "Personal", "Work"]
             }
         
     }
 
-    // Number of rows
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
     }
 
-    // Display each cell
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
         cell.textLabel?.text = categories[indexPath.row]
         return cell
     }
 
-    // Handle tap → go to Task List
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "TaskListViewController") as! TaskListViewController
         navigationController?.pushViewController(vc, animated: true)

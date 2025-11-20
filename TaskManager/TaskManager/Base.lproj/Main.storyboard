@@ -100,6 +100,11 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="fat-78-2gR">
                         <nil key="title"/>
+                        <barButtonItem key="rightBarButtonItem" title="Filter" style="plain" id="eaA-2W-3fU">
+                            <connections>
+                                <action selector="filterButtonPressed:" destination="ih0-vQ-AGk" id="Br6-sE-Idz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

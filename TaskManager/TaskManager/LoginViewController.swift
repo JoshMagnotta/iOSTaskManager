@@ -13,7 +13,7 @@ class LoginViewController: UIViewController {
     @IBAction func loginButton(_ sender: Any) {
         
         guard let email = emailField.text,
-                  let password = passwordField.text else { return }
+              let password = passwordField.text else { return }
 
         AuthManager.shared.login(email: email, password: password) { result in
             DispatchQueue.main.async {
@@ -46,12 +46,6 @@ class LoginViewController: UIViewController {
         let tabBarController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController")
         tabBarController.modalPresentationStyle = .fullScreen
         present(tabBarController, animated: true)
-    }
-    
-    func showAlert(_ message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
     }
     
     func showErrorAlert(message: String) {
