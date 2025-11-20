@@ -99,6 +99,49 @@ https://www.loom.com/share/a24de1b5051a4b858a785a95aea687f0
 
 <img src="https://i.imgur.com/sSsMKxB.jpeg" width=600>
 
+## Schema
+
+### Models
+```
+struct Task {
+    let title: String
+    let category: String
+    let dueDate: Date
+    let details: String?
+    let priority: Priority?
+}
+```
+
+```
+enum Priority {
+    case low = "Low"
+    case medium = "Medium"
+    case high = "High"
+}
+```
+
+```
+struct AuthRequest {
+    let email: String
+    let password: String
+}
+```
+
+```
+struct LoginResponse: Codable {
+    let accessToken: String
+}
+
+struct SignupResponse: Codable {
+    let message: String
+}
+
+struct AuthErrorResponse: Codable {
+    let error: String
+}
+
+```
+
 
 ### Networking
 
